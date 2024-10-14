@@ -70,4 +70,9 @@ where: '$columnId = ?',
 whereArgs: [id],
       );
     }
+
+Future<int> deleteAll() async {
+  return await _db.delete(table); 
+}
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
 
 import 'database_helper.dart';
 
@@ -56,6 +57,9 @@ ElevatedButton(
 onPressed: _delete,
 child: const Text('delete'),
             ),
+ElevatedButton(
+  onPressed:  _deleteAll, 
+  child: const Text('Delete all'))
           ],
         ),
       ),
@@ -94,4 +98,10 @@ final id = await dbHelper.queryRowCount();
 final rowsDeleted = await dbHelper.delete(id);
 debugPrint('deleted $rowsDeleted row(s): row $id');
     }
+
+void _deleteAll() async {
+  await dbHelper.deleteAll(); 
+  debugPrint('All rows deleted');
+}
+
 }
